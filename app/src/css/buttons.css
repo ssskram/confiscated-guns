@@ -1,0 +1,7 @@
+/* Buttons
+/* ------------------------- */
+
+.btn {
+    z-index: 0 !important;
+    white-space: normal;
+}

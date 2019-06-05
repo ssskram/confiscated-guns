@@ -1,0 +1,27 @@
+/* Navbar
+/* ------------------------- */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    border-width: 0px 0px 1px 0px;
+}
+
+.navbar-brand {
+    color: #FAF7F2 !important;
+    letter-spacing: 2px;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    height: auto !important;
+    font-size: 1.8em;
+    margin-top: 3px;
+}
+
+.navbar-dark .navbar-toggler {
+    color: #fff;
+    border-color: #fff;
+}
