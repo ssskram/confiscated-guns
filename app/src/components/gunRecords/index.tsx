@@ -6,7 +6,6 @@ import { Container, Col, Row } from "react-bootstrap";
 import * as guns from "../../store/guns";
 import * as user from "../../store/user";
 import * as types from "../../store/types";
-import Form from "../demoForm";
 
 type props = {
   guns: types.gun[];
@@ -27,7 +26,6 @@ const Home = (props: props) => {
       <HydrateStore />
       <Row>
         <Col md={{ span: 4, offset: 4 }}>
-          <Form />
         </Col>
       </Row>
     </Container>
