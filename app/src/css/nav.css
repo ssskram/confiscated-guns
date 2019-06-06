@@ -8,6 +8,8 @@
     right: 0;
     z-index: 2;
     border-width: 0px 0px 1px 0px;
+    z-index: 1000;
+    background-color: black;
 }
 
 .navbar-brand {
@@ -24,4 +26,5 @@
 .navbar-dark .navbar-toggler {
     color: #fff;
     border-color: #fff;
+    margin-top: -8px;
 }
