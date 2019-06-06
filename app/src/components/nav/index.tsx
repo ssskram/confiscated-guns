@@ -1,22 +1,13 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Nav, Navbar } from "react-bootstrap";
 import AccountContainer from "./accountContainer";
 
-type props = {
-  location: any;
-};
-
-const NavMenu = (props: props) => {
-  console.log(props);
-  let newGun = <span style={{ color: "rgb(255, 193, 7)" }}> > New Gun</span>;
+const NavMenu = () => {
   return (
     <Navbar collapseOnSelect expand="lg" variant="dark">
       <Link to="/">
-        <Navbar.Brand>
-          Confiscated Guns{props.location.pathname == "/NewGun" ? newGun : null}
-        </Navbar.Brand>
+        <Navbar.Brand>Confiscated Guns</Navbar.Brand>
       </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse
@@ -31,4 +22,4 @@ const NavMenu = (props: props) => {
   );
 };
 
-export default withRouter(NavMenu);
+export default NavMenu;

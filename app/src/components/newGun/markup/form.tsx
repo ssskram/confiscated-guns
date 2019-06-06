@@ -16,7 +16,7 @@ const Form = (props: props) => {
     <Container>
       <Row>
         <Col md={4}>
-          <h2>Gun</h2>
+          <h3>Gun</h3>
           <hr />
           <Input
             value={props.gun.serialNumber}
@@ -55,15 +55,18 @@ const Form = (props: props) => {
           />
         </Col>
         <Col md={4}>
-          <h2>Case</h2>
+          <h3>Case</h3>
           <hr />
           <Cleave
             value={props.gun.dateOfRecovery}
-            placeholder="Enter date"
+            placeholder="yyyy/mm/dd"
             header="Date of recovery"
             required={false}
             callback={e => props.setState({ dateOfRecovery: e.target.value })}
-            options={{ creditCard: true }}
+            options={{
+              date: true,
+              datePattern: ["y", "m", "d"]
+            }}
           />
           <Input
             value={props.gun.originatingAgencyCaseNumber}
@@ -122,7 +125,7 @@ const Form = (props: props) => {
           />
         </Col>
         <Col md={4}>
-          <h2>Individual</h2>
+          <h3>Individual</h3>
           <hr />
           <Input
             value={props.gun.name}
@@ -133,11 +136,14 @@ const Form = (props: props) => {
           />
           <Cleave
             value={props.gun.dateOfBirth}
-            placeholder="Enter date"
+            placeholder="yyyy/mm/dd"
             header="Date of birth"
             required={false}
             callback={e => props.setState({ dateOfBirth: e.target.value })}
-            options={{ creditCard: true }}
+            options={{
+              date: true,
+              datePattern: ['Y', 'm', 'd']
+            }}
           />
           <Input
             value={props.gun.operatorsLicenseNumber}

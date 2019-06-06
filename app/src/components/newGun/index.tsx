@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { ApplicationState } from "../../store";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import * as guns from "../../store/guns";
 import * as user from "../../store/user";
 import * as types from "../../store/types";
