@@ -11,6 +11,7 @@ import moment from "moment";
 
 type props = {
   guns: types.gun[];
+  newGun: (gun: types.gun) => number;
   user: types.user;
 };
 
@@ -20,6 +21,7 @@ export class NewGun extends React.Component<props, state> {
   constructor(props: props) {
     super(props);
     this.state = {
+      spID: undefined,
       serialNumber: "",
       gunMake: "",
       gunModel: "",
@@ -48,12 +50,20 @@ export class NewGun extends React.Component<props, state> {
     window.scrollTo(0, 0);
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ createdBy: nextProps.user.name });
+  }
+
+  post() {
+    this.props.newGun(this.state);
+  }
+
   public render() {
     return (
       <Container style={{ marginTop: "20px", marginBottom: "100px" }}>
         <Row>
           <Form setState={this.setState.bind(this)} gun={this.state} />
-          <Submit />
+          <Submit gun={this.state} post={this.post.bind(this)} />
         </Row>
       </Container>
     );

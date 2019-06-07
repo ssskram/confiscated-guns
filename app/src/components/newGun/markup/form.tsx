@@ -11,12 +11,16 @@ type props = {
   gun: types.gun;
 };
 
+const headerColor = {
+  color: "rgb(255, 193, 7)"
+};
+
 const Form = (props: props) => {
   return (
     <Container>
       <Row>
         <Col md={4}>
-          <h3>Gun</h3>
+          <h3 style={headerColor}>Gun</h3>
           <hr />
           <Input
             value={props.gun.serialNumber}
@@ -55,7 +59,7 @@ const Form = (props: props) => {
           />
         </Col>
         <Col md={4}>
-          <h3>Case</h3>
+          <h3 style={headerColor}>Case</h3>
           <hr />
           <Cleave
             value={props.gun.dateOfRecovery}
@@ -65,7 +69,7 @@ const Form = (props: props) => {
             callback={e => props.setState({ dateOfRecovery: e.target.value })}
             options={{
               date: true,
-              datePattern: ["y", "m", "d"]
+              datePattern: ["Y", "m", "d"]
             }}
           />
           <Input
@@ -84,15 +88,6 @@ const Form = (props: props) => {
             required={false}
             callback={e =>
               props.setState({ linkageAgencyIdentifier: e.target.value })
-            }
-          />
-          <Input
-            value={props.gun.linkageAgencyCaseNumber}
-            placeholder="Case number"
-            header="Linkage agency case number"
-            required={false}
-            callback={e =>
-              props.setState({ linkageAgencyCaseNumber: e.target.value })
             }
           />
           <Input
@@ -125,7 +120,7 @@ const Form = (props: props) => {
           />
         </Col>
         <Col md={4}>
-          <h3>Individual</h3>
+          <h3 style={headerColor}>Individual</h3>
           <hr />
           <Input
             value={props.gun.name}
@@ -142,7 +137,7 @@ const Form = (props: props) => {
             callback={e => props.setState({ dateOfBirth: e.target.value })}
             options={{
               date: true,
-              datePattern: ['Y', 'm', 'd']
+              datePattern: ["Y", "m", "d"]
             }}
           />
           <Input
@@ -153,6 +148,13 @@ const Form = (props: props) => {
             callback={e =>
               props.setState({ operatorsLicenseNumber: e.target.value })
             }
+          />
+          <Input
+            value={props.gun.licenseState}
+            placeholder="License state"
+            header="Operators license state"
+            required={false}
+            callback={e => props.setState({ licenseState: e.target.value })}
           />
           <Select
             value={

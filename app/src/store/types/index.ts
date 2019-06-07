@@ -35,4 +35,5 @@ export interface gun {
   createdBy: string;
   created: string;
   postedNCIC: string;
+  spID: number;
 }

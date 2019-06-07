@@ -20,22 +20,27 @@ export const actionCreators = {
         dispatch({ type: constants.loadGuns, guns: data });
       });
   },
-  newGun: (gun): AppThunkAction<any> => async dispatch => {
-    const response = await fetch(
-      "https://365proxy.azurewebsites.us/confiscatedGuns/newRecord",
-      {
-        method: "post",
-        body: JSON.stringify(gun),
-        headers: new Headers({
-          Authorization: "Bearer " + process.env.REACT_APP_365_PROXY,
-          "Content-Type": "application/json"
-        })
-      }
-    );
-    if (response.status == 200) {
-      dispatch({ type: constants.newGun, gun: gun });
-      return 200;
-    } else return 500;
+  newGun: (gun: types.gun): AppThunkAction<any> => async dispatch => {
+    let spGun: types.gun = Object.assign({}, gun);
+    delete spGun.created;
+    console.log(spGun);
+    // const response = await fetch(
+    //   "https://365proxy.azurewebsites.us/confiscatedGuns/newRecord",
+    //   {
+    //     method: "post",
+    //     body: JSON.stringify(spGun),
+    //     headers: new Headers({
+    //       Authorization: "Bearer " + process.env.REACT_APP_365_PROXY,
+    //       "Content-Type": "application/json"
+    //     })
+    //   }
+    // );
+    // if (response.status == 200) {
+    //   dispatch({ type: constants.newGun, gun: gun });
+    //   return 200;
+    // } else return 500;
+    dispatch({ type: constants.newGun, gun: gun });
+    return 200;
   }
 };
 
