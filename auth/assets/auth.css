@@ -14,8 +14,9 @@ h1, h2 {
 
 .auth-img {
     min-width: 250px;
+    max-width: 600px;
     margin-bottom: 25px;
-    width: 80%
+    width: 80%;
 }
 
 .btn-secondary {
