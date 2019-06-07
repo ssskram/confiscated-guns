@@ -124,8 +124,6 @@ app.get(
         })
       }
     );
-    console.log(await response);
-    console.log(await response.json());
     const users = await response.json();
     // if user is in group, let through the gates
     if (
