@@ -12,10 +12,6 @@ td {
     font-family: 'Ubuntu', sans-serif;
 }
 
-.ReactTable .rt-tbody {
-    overflow-x: hidden !important;
-}
-
 .rt-td {
     text-align: center !important;
     white-space: pre-wrap !important;

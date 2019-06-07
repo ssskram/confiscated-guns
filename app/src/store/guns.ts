@@ -40,6 +40,24 @@ export const actionCreators = {
       dispatch({ type: constants.newGun, gun: gun });
       return 200;
     } else return 500;
+  },
+  updateRecord: (updateObj: {
+    spID: number;
+    postedNCIC: "Yes" | "No";
+  }): AppThunkAction<any> => dispatch => {
+    const spLoad = JSON.stringify({
+      Id: updateObj.spID,
+      postedNCIC: updateObj.postedNCIC
+    });
+    fetch("https://365proxy.azurewebsites.us/confiscatedGuns/updateRecord", {
+      method: "post",
+      body: spLoad,
+      headers: new Headers({
+        Authorization: "Bearer " + process.env.REACT_APP_365_PROXY,
+        "Content-Type": "application/json"
+      })
+    });
+    dispatch({ type: constants.updateRecord, update: updateObj });
   }
 };
 
@@ -55,6 +73,18 @@ export const reducer: Reducer<types.guns> = (
       return {
         ...state,
         guns: state.guns.concat(action.gun)
+      };
+    case constants.updateRecord:
+      return {
+        ...state,
+        guns: state.guns.map(record =>
+          record.spID === action.update.spID
+            ? {
+                ...record,
+                postedNCIC: action.update.postedNCIC
+              }
+            : record
+        )
       };
   }
   return state || unloadedState;

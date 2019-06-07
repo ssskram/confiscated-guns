@@ -5,6 +5,7 @@ import "./css/map.css";
 import "./css/modal.css";
 import "./css/nav.css";
 import "./css/table.css";
+import "react-table/react-table.css";
 import "./css/form.css";
 import "./css/siteSpecific.css";
 import * as React from "react";
