@@ -2,6 +2,8 @@ import React from "react";
 import Modal from "react-responsive-modal";
 import * as types from "../../../store/types";
 import { Container, Row, Col } from "react-bootstrap";
+import copy from "copy-to-clipboard";
+const copyIcon = require("../../../images/copy.png");
 
 type props = {
   gun: types.gun;
@@ -12,8 +14,73 @@ const fontSize = {
   fontSize: "1.2em"
 };
 
+const model = [
+  { label: "Serial Number (SER)", field: "serialNumber" },
+  { label: "Gun Make (MAK)", field: "gunMake" },
+  { label: "Model (MOD)", field: "gunModel" },
+  { label: "Caliber (CAL)", field: "gunCaliber" },
+  { label: "Date of Recover (DOR)", field: "dateOfRecovery" },
+  {
+    label: "Originating Agency Case Number (OCA)",
+    field: "originatingAgencyCaseNumber"
+  },
+  {
+    label: "Linkage Agency Identifier (LKI)",
+    field: "linkageAgencyIdentifier"
+  },
+  {
+    label: "Linkage Agency Case Number (LKA)",
+    field: "linkageAgencyCaseNumber"
+  },
+  {
+    label: "Notify Originating Agency (NOA)",
+    field: "notifyOriginatingAgency"
+  },
+  { label: "Miscellaneous (MIS)", field: "miscellaneous" },
+  { label: "Name (NAM)", field: "name" },
+  { label: "Date of Birth (DOB)", field: "dateOfBirth" },
+  { label: "Operators License Number (OLN)", field: "operatorsLicenseNumber" },
+  { label: "License State (OLS)", field: "licenseState" },
+  {
+    label: "Possessed by Prohibited Person (PPP)",
+    field: "possessedByProhibitedPerson"
+  },
+  { label: "Charged with Crime (CHC)", field: "chargedWithCrime" },
+  { label: "Permit in LTC (LTC)", field: "permitInLTC" }
+];
+
 const ViewRecord = (props: props) => {
-  const g = props.gun;
+  // slice model in half for UI
+  const half = Math.floor(model.length / 2);
+  const fh = model.slice(0, half);
+  const sh = model.slice(half, model.length);
+
+  const markup = (o, k) => {
+    return (
+      <div key={k}>
+        <u>{o.label}</u>
+        <div>
+          {props.gun[o.field] ? (
+            <div>
+              <b style={fontSize}>{props.gun[o.field]}</b>
+              <span>
+                <button
+                  title="Copy to clipboard"
+                  style={{ float: "right" }}
+                  onClick={() => copy(props.gun[o.field])}
+                >
+                  <img src={copyIcon} style={{ height: "15px" }} />
+                </button>
+              </span>
+            </div>
+          ) : (
+            <i>null</i>
+          )}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <Modal
       open={true}
@@ -33,151 +100,8 @@ const ViewRecord = (props: props) => {
           Full Record
         </h3>
         <Row>
-          <Col md={6}>
-            <div>
-              <u>Serial Number (SER)</u>
-              <br />
-              {g.serialNumber ? (
-                <b style={fontSize}>{g.serialNumber}</b>
-              ) : (
-                <i>null</i>
-              )}
-            </div>
-            <div>
-              <u>Gun Make (MAK)</u>
-              <br />
-              {g.gunMake ? <b style={fontSize}>{g.gunMake}</b> : <i>null</i>}
-            </div>
-            <div>
-              <u>Model (MOD)</u>
-              <br />
-              {g.gunModel ? <b style={fontSize}>{g.gunModel}</b> : <i>null</i>}
-            </div>
-            <div>
-              <u>Caliber (CAL)</u>
-              <br />
-              {g.gunCaliber ? (
-                <b style={fontSize}>{g.gunCaliber}</b>
-              ) : (
-                <i>null</i>
-              )}
-            </div>
-            <div>
-              <u>Date of Recover (DOR)</u>
-              <br />
-              {g.dateOfRecovery ? (
-                <b style={fontSize}>{g.dateOfRecovery}</b>
-              ) : (
-                <i>null</i>
-              )}
-            </div>
-            <div>
-              <u>Originating Agency Case Number (OCA)</u>
-              <br />
-              {g.originatingAgencyCaseNumber ? (
-                <b style={fontSize}>{g.originatingAgencyCaseNumber}</b>
-              ) : (
-                <i>null</i>
-              )}
-            </div>
-            <div>
-              <u>Linkage Agency Identifier (LKI)</u>
-              <br />
-              {g.linkageAgencyIdentifier ? (
-                <b style={fontSize}>{g.linkageAgencyIdentifier}</b>
-              ) : (
-                <i>null</i>
-              )}
-            </div>
-            <div>
-              <u>Linkage Agency Case Number (LKA)</u>
-              <br />
-              {g.linkageAgencyCaseNumber ? (
-                <b style={fontSize}>{g.linkageAgencyCaseNumber}</b>
-              ) : (
-                <i>null</i>
-              )}
-            </div>
-            <div>
-              <u>Notify Originating Agency (NOA)</u>
-              <br />
-              {g.notifyOriginatingAgency ? (
-                <b style={fontSize}>{g.notifyOriginatingAgency}</b>
-              ) : (
-                <i>null</i>
-              )}
-            </div>
-          </Col>
-          <Col md={6}>
-            <div>
-              <u>Miscellaneous (MIS)</u>
-              <br />
-              {g.miscellaneous ? (
-                <b style={fontSize}>{g.miscellaneous}</b>
-              ) : (
-                <i>null</i>
-              )}
-            </div>
-            <div>
-              <u>Name (NAM)</u>
-              <br />
-              {g.name ? <b style={fontSize}>{g.name}</b> : <i>null</i>}
-            </div>
-            <div>
-              <u>Date of Birth (DOB)</u>
-              <br />
-              {g.dateOfBirth ? (
-                <b style={fontSize}>{g.dateOfBirth}</b>
-              ) : (
-                <i>null</i>
-              )}
-            </div>
-            <div>
-              <u>Operators License Number (OLN)</u>
-              <br />
-              {g.operatorsLicenseNumber ? (
-                <b style={fontSize}>{g.operatorsLicenseNumber}</b>
-              ) : (
-                <i>null</i>
-              )}
-            </div>
-            <div>
-              <u>License State (OLS)</u>
-              <br />
-              {g.licenseState ? (
-                <b style={fontSize}>{g.licenseState}</b>
-              ) : (
-                <i>null</i>
-              )}
-            </div>
-            <div>
-              <u>Possessed by Prohibited Person (PPP)</u>
-              <br />
-              {g.possessedByProhibitedPerson ? (
-                <b style={fontSize}>{g.possessedByProhibitedPerson}</b>
-              ) : (
-                <i>null</i>
-              )}
-            </div>
-            <div>
-              <u>Charged with Crime (CHC)</u>
-              <br />
-              {g.chargedWithCrime ? (
-                <b style={fontSize}>{g.chargedWithCrime}</b>
-              ) : (
-                <i>null</i>
-              )}
-            </div>
-            <div>
-              <u>Permit in LTC (LTC)</u>
-              <br />
-              {g.permitInLTC ? (
-                <b style={fontSize}>{g.permitInLTC}</b>
-              ) : (
-                <i>null</i>
-              )}
-            </div>
-          </Col>
+          <Col md={6}>{fh.map((o, k) => markup(o, k))}</Col>
+          <Col md={6}>{sh.map((o, k) => markup(o, k))}</Col>
         </Row>
       </Container>
     </Modal>
