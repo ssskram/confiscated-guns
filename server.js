@@ -120,10 +120,12 @@ app.get(
         method: "get",
         headers: new Headers({
           Authorization: "Bearer " + process.env.REACT_APP_365_PROXY,
-          "Accept": "application/json"
+          Accept: "application/json"
         })
       }
     );
+    console.log(await response);
+    console.log(await response.json());
     const users = await response.json();
     // if user is in group, let through the gates
     if (
