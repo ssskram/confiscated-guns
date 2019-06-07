@@ -37,89 +37,145 @@ const ViewRecord = (props: props) => {
             <div>
               <u>Serial Number (SER)</u>
               <br />
-              <b style={fontSize}>{g.serialNumber}</b>
+              {g.serialNumber ? (
+                <b style={fontSize}>{g.serialNumber}</b>
+              ) : (
+                <i>null</i>
+              )}
             </div>
             <div>
               <u>Gun Make (MAK)</u>
               <br />
-              <b style={fontSize}>{g.gunMake}</b>
+              {g.gunMake ? <b style={fontSize}>{g.gunMake}</b> : <i>null</i>}
             </div>
             <div>
               <u>Model (MOD)</u>
               <br />
-              <b style={fontSize}>{g.gunModel}</b>
+              {g.gunModel ? <b style={fontSize}>{g.gunModel}</b> : <i>null</i>}
             </div>
             <div>
               <u>Caliber (CAL)</u>
               <br />
-              <b style={fontSize}>{g.gunCaliber}</b>
+              {g.gunCaliber ? (
+                <b style={fontSize}>{g.gunCaliber}</b>
+              ) : (
+                <i>null</i>
+              )}
             </div>
             <div>
               <u>Date of Recover (DOR)</u>
               <br />
-              <b style={fontSize}>{g.dateOfRecovery}</b>
+              {g.dateOfRecovery ? (
+                <b style={fontSize}>{g.dateOfRecovery}</b>
+              ) : (
+                <i>null</i>
+              )}
             </div>
             <div>
               <u>Originating Agency Case Number (OCA)</u>
               <br />
-              <b style={fontSize}>{g.originatingAgencyCaseNumber}</b>
+              {g.originatingAgencyCaseNumber ? (
+                <b style={fontSize}>{g.originatingAgencyCaseNumber}</b>
+              ) : (
+                <i>null</i>
+              )}
             </div>
             <div>
               <u>Linkage Agency Identifier (LKI)</u>
               <br />
-              <b style={fontSize}>{g.linkageAgencyIdentifier}</b>
+              {g.linkageAgencyIdentifier ? (
+                <b style={fontSize}>{g.linkageAgencyIdentifier}</b>
+              ) : (
+                <i>null</i>
+              )}
             </div>
             <div>
               <u>Linkage Agency Case Number (LKA)</u>
               <br />
-              <b style={fontSize}>{g.linkageAgencyCaseNumber}</b>
+              {g.linkageAgencyCaseNumber ? (
+                <b style={fontSize}>{g.linkageAgencyCaseNumber}</b>
+              ) : (
+                <i>null</i>
+              )}
             </div>
             <div>
               <u>Notify Originating Agency (NOA)</u>
               <br />
-              <b style={fontSize}>{g.notifyOriginatingAgency}</b>
+              {g.notifyOriginatingAgency ? (
+                <b style={fontSize}>{g.notifyOriginatingAgency}</b>
+              ) : (
+                <i>null</i>
+              )}
             </div>
           </Col>
           <Col md={6}>
             <div>
               <u>Miscellaneous (MIS)</u>
               <br />
-              <b style={fontSize}>{g.miscellaneous}</b>
+              {g.miscellaneous ? (
+                <b style={fontSize}>{g.miscellaneous}</b>
+              ) : (
+                <i>null</i>
+              )}
             </div>
             <div>
               <u>Name (NAM)</u>
               <br />
-              <b style={fontSize}>{g.name}</b>
+              {g.name ? <b style={fontSize}>{g.name}</b> : <i>null</i>}
             </div>
             <div>
               <u>Date of Birth (DOB)</u>
               <br />
-              <b style={fontSize}>{g.dateOfBirth}</b>
+              {g.dateOfBirth ? (
+                <b style={fontSize}>{g.dateOfBirth}</b>
+              ) : (
+                <i>null</i>
+              )}
             </div>
             <div>
               <u>Operators License Number (OLN)</u>
               <br />
-              <b style={fontSize}>{g.operatorsLicenseNumber}</b>
+              {g.operatorsLicenseNumber ? (
+                <b style={fontSize}>{g.operatorsLicenseNumber}</b>
+              ) : (
+                <i>null</i>
+              )}
             </div>
             <div>
               <u>License State (OLS)</u>
               <br />
-              <b style={fontSize}>{g.licenseState}</b>
+              {g.licenseState ? (
+                <b style={fontSize}>{g.licenseState}</b>
+              ) : (
+                <i>null</i>
+              )}
             </div>
             <div>
               <u>Possessed by Prohibited Person (PPP)</u>
               <br />
-              <b style={fontSize}>{g.possessedByProhibitedPerson}</b>
+              {g.possessedByProhibitedPerson ? (
+                <b style={fontSize}>{g.possessedByProhibitedPerson}</b>
+              ) : (
+                <i>null</i>
+              )}
             </div>
             <div>
               <u>Charged with Crime (CHC)</u>
               <br />
-              <b style={fontSize}>{g.chargedWithCrime}</b>
+              {g.chargedWithCrime ? (
+                <b style={fontSize}>{g.chargedWithCrime}</b>
+              ) : (
+                <i>null</i>
+              )}
             </div>
             <div>
               <u>Permit in LTC (LTC)</u>
               <br />
-              <b style={fontSize}>{g.permitInLTC}</b>
+              {g.permitInLTC ? (
+                <b style={fontSize}>{g.permitInLTC}</b>
+              ) : (
+                <i>null</i>
+              )}
             </div>
           </Col>
         </Row>
