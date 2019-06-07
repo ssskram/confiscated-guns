@@ -5,3 +5,7 @@ export const loadUser = "loadUser";
 export const loadGuns = "loadGuns";
 export const newGun = "newGun";
 
+// messages
+export const error = "errorMessage";
+export const clear = "clearMessage";
+

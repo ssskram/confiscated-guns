@@ -1,8 +1,10 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { ApplicationState } from "../../store";
 import { Container, Row } from "react-bootstrap";
 import * as guns from "../../store/guns";
+import * as messages from "../../store/messages";
 import * as user from "../../store/user";
 import * as types from "../../store/types";
 import Form from "./markup/form";
@@ -13,6 +15,7 @@ type props = {
   guns: types.gun[];
   newGun: (gun: types.gun) => number;
   user: types.user;
+  error: () => void;
 };
 
 type state = types.gun;
@@ -42,7 +45,8 @@ export class NewGun extends React.Component<props, state> {
       permitInLTC: "",
       createdBy: props.user.name,
       created: moment().format("MM-DD-YYYY, hh:mm A"),
-      postedNCIC: "No"
+      postedNCIC: "No",
+      redirect: undefined
     };
   }
 
@@ -54,11 +58,18 @@ export class NewGun extends React.Component<props, state> {
     this.setState({ createdBy: nextProps.user.name });
   }
 
-  post() {
-    this.props.newGun(this.state);
+  async post() {
+    const status = await this.props.newGun(this.state);
+    if (status == 500) {
+      this.props.error();
+    }
+    this.setState({ redirect: true });
   }
 
   public render() {
+    if (this.state.redirect == true) {
+      return <Redirect push to="/" />;
+    }
     return (
       <Container style={{ marginTop: "20px", marginBottom: "100px" }}>
         <Row>
@@ -73,10 +84,12 @@ export class NewGun extends React.Component<props, state> {
 export default connect(
   (state: ApplicationState) => ({
     ...state.user,
-    ...state.guns
+    ...state.guns,
+    ...state.messages
   }),
   {
     ...user.actionCreators,
-    ...guns.actionCreators
+    ...guns.actionCreators,
+    ...messages.actionCreators
   }
 )(NewGun);

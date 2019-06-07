@@ -5,6 +5,11 @@ export interface user {
   name: string;
 }
 
+// message
+export interface messsage {
+  message: string;
+}
+
 // select
 export type select = { value: string; label: string };
 
@@ -36,4 +41,5 @@ export interface gun {
   created: string;
   postedNCIC: string;
   spID: number;
+  redirect?: boolean;
 }

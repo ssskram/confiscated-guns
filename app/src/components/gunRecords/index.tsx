@@ -8,6 +8,7 @@ import * as user from "../../store/user";
 import * as types from "../../store/types";
 import AddButton from "./markup/addButton";
 import RecordTable from "./markup/recordTable";
+import Messages from "../utilities/messages";
 
 type props = {
   guns: types.gun[];
@@ -19,17 +20,16 @@ const GunRecords = (props: props) => {
     window.scrollTo(0, 0);
   }, []);
 
-  const updateRecord = () => {
-
-  }
+  const updateRecord = () => {};
 
   return (
     <Container>
       <HydrateStore />
       <Row>
         <Col md={{ span: 10, offset: 1 }}>
+          <Messages />
           <AddButton />
-          <RecordTable/>
+          <RecordTable />
         </Col>
       </Row>
     </Container>

@@ -23,6 +23,7 @@ export const actionCreators = {
   newGun: (gun: types.gun): AppThunkAction<any> => async dispatch => {
     let spGun: types.gun = Object.assign({}, gun);
     delete spGun.created;
+    delete spGun.redirect;
     console.log(spGun);
     // const response = await fetch(
     //   "https://365proxy.azurewebsites.us/confiscatedGuns/newRecord",
@@ -40,7 +41,7 @@ export const actionCreators = {
     //   return 200;
     // } else return 500;
     dispatch({ type: constants.newGun, gun: gun });
-    return 200;
+    return 500;
   }
 };
 
