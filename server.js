@@ -119,7 +119,8 @@ app.get(
       {
         method: "get",
         headers: new Headers({
-          Authorization: "Bearer " + process.env.REACT_APP_365_PROXY
+          Authorization: "Bearer " + process.env.REACT_APP_365_PROXY,
+          "Accept": "application/json"
         })
       }
     );
