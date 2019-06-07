@@ -29,7 +29,7 @@ const GunRecords = (props: props) => {
         <Col md={{ span: 10, offset: 1 }}>
           <Messages />
           <AddButton />
-          <RecordTable />
+          <RecordTable guns={props.guns} />
         </Col>
       </Row>
     </Container>

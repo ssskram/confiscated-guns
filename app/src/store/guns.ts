@@ -24,24 +24,22 @@ export const actionCreators = {
     let spGun: types.gun = Object.assign({}, gun);
     delete spGun.created;
     delete spGun.redirect;
-    console.log(spGun);
-    // const response = await fetch(
-    //   "https://365proxy.azurewebsites.us/confiscatedGuns/newRecord",
-    //   {
-    //     method: "post",
-    //     body: JSON.stringify(spGun),
-    //     headers: new Headers({
-    //       Authorization: "Bearer " + process.env.REACT_APP_365_PROXY,
-    //       "Content-Type": "application/json"
-    //     })
-    //   }
-    // );
-    // if (response.status == 200) {
-    //   dispatch({ type: constants.newGun, gun: gun });
-    //   return 200;
-    // } else return 500;
-    dispatch({ type: constants.newGun, gun: gun });
-    return 500;
+    delete spGun.spID;
+    const response = await fetch(
+      "https://365proxy.azurewebsites.us/confiscatedGuns/newRecord",
+      {
+        method: "post",
+        body: JSON.stringify(spGun),
+        headers: new Headers({
+          Authorization: "Bearer " + process.env.REACT_APP_365_PROXY,
+          "Content-Type": "application/json"
+        })
+      }
+    );
+    if (response.status == 200) {
+      dispatch({ type: constants.newGun, gun: gun });
+      return 200;
+    } else return 500;
   }
 };
 

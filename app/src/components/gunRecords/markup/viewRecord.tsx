@@ -1,7 +1,12 @@
 import React from "react";
 import Modal from "react-responsive-modal";
+import * as types from "../../../store/types";
 
-const ViewRecord = () => {
+type props = {
+  gun: types.gun;
+};
+
+const ViewRecord = (props: props) => {
   return <div />;
 };
 

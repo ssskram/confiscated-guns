@@ -1,8 +1,14 @@
 import React from "react";
 import Table from "react-table";
 import ViewRecord from "./viewRecord";
+import * as types from "../../../store/types";
 
-const RecordTable = () => {
+type props = {
+  guns: types.gun[];
+};
+
+const RecordTable = (props: props) => {
+  console.log(props.guns);
   return <div />;
 };
 
